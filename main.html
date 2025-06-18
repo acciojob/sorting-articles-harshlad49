@@ -1,16 +1,59 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Alphabetical Article Sorter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('your-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul#band {
+      list-style-type: square;
+      background-color: rgba(255, 255, 255, 0.95);
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    ul#band li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    ul#band li:last-child {
+      border-bottom: none;
+    }
+  </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <ul id="band"></ul>
 
+  <script>
+    const bands = [
+      'The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean',
+      'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans',
+      'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'
+    ];
+
+    // Function to strip articles for sorting
+    function stripArticle(bandName) {
+      return bandName.replace(/^(a |an |the )/i, '').trim();
+    }
+
+    // Sort ignoring articles
+    const sortedBands = bands.sort((a, b) => {
+      return stripArticle(a).localeCompare(stripArticle(b));
+    });
+
+    // Display in the unordered list
+    const ul = document.getElementById('band');
+    ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+  </script>
 </body>
-
 </html>
