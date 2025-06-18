@@ -12,7 +12,7 @@
       padding: 0;
     }
 
-    ul#band {
+    ul#bands {
       list-style-type: square;
       background-color: rgba(255, 255, 255, 0.95);
       width: 300px;
@@ -21,18 +21,18 @@
       border-radius: 8px;
     }
 
-    ul#band li {
+    ul#bands li {
       padding: 8px 0;
       border-bottom: 1px solid #eee;
     }
 
-    ul#band li:last-child {
+    ul#bands li:last-child {
       border-bottom: none;
     }
   </style>
 </head>
 <body>
-  <ul id="band"></ul>
+  <ul id="bands"></ul>
 
   <script>
     const bands = [
@@ -41,18 +41,15 @@
       'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'
     ];
 
-    // Function to strip articles for sorting
     function stripArticle(bandName) {
       return bandName.replace(/^(a |an |the )/i, '').trim();
     }
 
-    // Sort ignoring articles
     const sortedBands = bands.sort((a, b) => {
       return stripArticle(a).localeCompare(stripArticle(b));
     });
 
-    // Display in the unordered list
-    const ul = document.getElementById('band');
+    const ul = document.getElementById('bands');
     ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
   </script>
 </body>
